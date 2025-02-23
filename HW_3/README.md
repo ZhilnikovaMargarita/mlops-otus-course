@@ -22,7 +22,22 @@
 Пример вызова скрипта через ноутбук:
 
 ```python
+import findspark
+findspark.init()
+
+import pyspark
 from prepare_data import DataPreparing
+
+app_name = "rita_spark_session"
+spark = (
+    pyspark.sql.SparkSession
+        .builder
+        .appName(app_name)
+        .config("spark.executor.memory", "1g")
+        .config("spark.driver.memory", "1g")
+        .getOrCreate()
+)
+spark.conf.set('spark.sql.repl.eagerEval.enabled', True)
 
 data_manager = DataPreparing(spark, path="data/2020-05-18.txt")
 data_manager.run()
