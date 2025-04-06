@@ -1,2 +1,0 @@
-apache-airflow[yandex]==2.10.5
-pyspark==3.5.3
