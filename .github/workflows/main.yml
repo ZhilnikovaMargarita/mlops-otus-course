@@ -17,7 +17,8 @@ env:
   SERVER_SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }} ## все переменные забиваются в Settings > Secrets And Variables > Actions
   PYTHON_VERSION: '3.x'
   LINTERS: 'ruff'
-  LINTER_CMD: 'ruff check src'
+  # LINTER_CMD: 'ruff check src'
+  LINTER_CMD: 'ruff check final_project'
 
 jobs:
   lint:
