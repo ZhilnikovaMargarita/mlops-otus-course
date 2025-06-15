@@ -9,7 +9,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY scripts scripts
 RUN chmod +x scripts/*.sh
 
-COPY src src
+COPY final_project/src src
 
 ENV PYTHONPATH=/app
 EXPOSE 8000
