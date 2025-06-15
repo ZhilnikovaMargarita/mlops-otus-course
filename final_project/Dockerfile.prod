@@ -6,9 +6,11 @@ COPY requirements.txt requirements.txt
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY scripts scripts
+# COPY scripts scripts
+COPY final_project/scripts scripts
 RUN chmod +x scripts/*.sh
 
+# COPY src src
 COPY final_project/src src
 
 ENV PYTHONPATH=/app
