@@ -1,9 +1,3 @@
-"""
-Module: inference.py
-Description: 
-    This module is used to load the model and make predictions on the test data.
-"""
-
 import joblib
 from typing import List
 
