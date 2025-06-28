@@ -1,44 +1,27 @@
 import os
-
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import pandas as pd
 from loguru import logger
 
 import holidays
-# from pandarallel import pandarallel
+from prometheus_client import Counter
 
 from src.inference import load_model, predict
 from src.utils import additional_columns, get_city, get_time_feats, get_cnts
 
-from prometheus_client import Counter
 
 TRESHOLD = os.getenv("TRESHOLD", default=0.6)
-
 CANCELLATIONS_COUNTER = Counter("cancelletions", "Number of taxi cancelletions")
-
-# pandarallel.initialize(progress_bar=True, nb_workers=4)
 
 
 logger.info("Loading pkl model")
-# MODEL_PATH = os.path.join("models", "model.joblib")
 MODEL_PATH = os.path.join("models", "model.pkl")
 MODEL = load_model(MODEL_PATH)
 logger.info("Model loaded")
 
 
 app = FastAPI()
-
-# class IrisFeatures(BaseModel):
-#     """Iris features"""
-#     # sepal_length: float
-#     # sepal_width: float
-#     # petal_length: float
-#     # petal_width: float
-#     SepalLengthCm: float
-#     SepalWidthCm: float
-#     PetalLengthCm: float
-#     PetalWidthCm: float
 
 @app.get("/")
 def health_check() -> dict:
@@ -106,4 +89,4 @@ def make_prediction(features: TripFeatures) -> dict:
             detail="An error occurred during prediction"
         )
     
-    return {"verdicts": verdict, "prediction": round(prob, 3), "treshold": treshold}
+    return {"verdicts": verdict, "prediction": round(prob, 3), "treshold": TRESHOLD}
