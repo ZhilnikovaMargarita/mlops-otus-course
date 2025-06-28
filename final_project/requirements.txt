@@ -3,3 +3,5 @@ uvicorn==0.31.0
 loguru==0.7.2
 pandas==2.2.3
 pandarallel==1.6.5
+holidays==0.74
+prometheus_client==0.22.1

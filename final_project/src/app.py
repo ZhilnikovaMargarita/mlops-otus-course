@@ -11,7 +11,11 @@ from pandarallel import pandarallel
 from src.inference import load_model, predict
 from src.utils import additional_columns, get_city, get_time_feats, get_cnts
 
-DEFAULT_TRESHOLD = 0.6
+from prometheus_client import Counter
+
+TRESHOLD = os.getenv("TRESHOLD", default=0.6)
+
+CANCELLATIONS_COUNTER = Counter("cancelletions", "Number of taxi cancelletions")
 
 # pandarallel.initialize(progress_bar=True, nb_workers=4)
 
@@ -92,12 +96,9 @@ def make_prediction(features: TripFeatures) -> dict:
         logger.info("prediction:")
         logger.info(f"{prediction}")
         prob = float(prediction.data[0][0])
-        treshold = os.getenv("treshold")
-        if os.getenv("treshold") is not None:
-            treshold = os.getenv("treshold")
-        else:
-            treshold = DEFAULT_TRESHOLD
-        verdict = prob > treshold
+        verdict = prob > TRESHOLD
+        if verdict:
+            CANCELLATIONS_COUNTER.inc()
     except Exception as e:
         logger.error(f"Prediction error: {e}")
         raise HTTPException(
