@@ -79,7 +79,9 @@ def make_prediction(features: TripFeatures) -> dict:
         logger.info("prediction:")
         logger.info(f"{prediction}")
         prob = float(prediction.data[0][0])
-        verdict = prob > TRESHOLD
+        logger.info("type of TRESHOLD:")
+        logger.info(f"{type(TRESHOLD)}")
+        verdict = prob > float(TRESHOLD)
         if verdict:
             CANCELLATIONS_COUNTER.inc()
     except Exception as e:
