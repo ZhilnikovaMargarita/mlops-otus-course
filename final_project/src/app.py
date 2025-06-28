@@ -11,7 +11,7 @@ from src.inference import load_model, predict
 from src.utils import additional_columns, get_city, get_time_feats, get_cnts
 
 
-TRESHOLD = os.getenv("TRESHOLD", default=0.6)
+TRESHOLD = float(os.getenv("TRESHOLD", default=0.6))
 CANCELLATIONS_COUNTER = Counter("cancelletions", "Number of taxi cancelletions")
 
 
