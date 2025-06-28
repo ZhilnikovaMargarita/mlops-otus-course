@@ -6,7 +6,7 @@ import pandas as pd
 from loguru import logger
 
 import holidays
-from pandarallel import pandarallel
+# from pandarallel import pandarallel
 
 from src.inference import load_model, predict
 from src.utils import additional_columns, get_city, get_time_feats, get_cnts

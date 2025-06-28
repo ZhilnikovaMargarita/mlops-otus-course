@@ -4,5 +4,6 @@ loguru==0.7.2
 pandas==2.2.3
 pandarallel==1.6.5
 joblib==1.5.1
+scikit-learn==1.6.1
 holidays==0.74
 prometheus_client==0.22.1
