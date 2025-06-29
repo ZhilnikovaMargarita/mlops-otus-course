@@ -8,3 +8,4 @@ scikit-learn==1.6.1
 holidays==0.74
 LightAutoML==0.4.1
 prometheus_client==0.22.1
+starlette==0.38.6

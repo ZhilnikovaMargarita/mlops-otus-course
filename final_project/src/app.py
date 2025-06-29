@@ -3,8 +3,8 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import pandas as pd
 from loguru import logger
-
 import holidays
+from starlette_exporter import PrometheusMiddleware, handle_metrics
 from prometheus_client import Counter
 
 from src.inference import load_model, predict
