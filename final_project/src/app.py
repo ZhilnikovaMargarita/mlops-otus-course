@@ -22,6 +22,8 @@ logger.info("Model loaded")
 
 
 app = FastAPI()
+app.add_middleware(PrometheusMiddleware)
+app.add_route("/metrics", handle_metrics)
 
 @app.get("/")
 def health_check() -> dict:
