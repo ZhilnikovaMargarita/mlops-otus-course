@@ -10,7 +10,8 @@ env:
   DOCKER_HUB_USER: ${{ secrets.DOCKER_HUB_USER }}
   DOCKER_HUB_REPOSITORY: ${{ secrets.DOCKER_HUB_REPOSITORY }}
   DOCKER_HUB_ACCESS_TOKEN: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-  IMAGE_NAME: ${{ secrets.DOCKER_HUB_USER }}/${{ secrets.DOCKER_HUB_REPOSITORY }}:${{ github.sha }}
+  # IMAGE_NAME: ${{ secrets.DOCKER_HUB_USER }}/${{ secrets.DOCKER_HUB_REPOSITORY }}:${{ github.sha }}
+  IMAGE_NAME: ${{ secrets.DOCKER_HUB_USER }}/${{ secrets.DOCKER_HUB_REPOSITORY }}:latest
   CONTAINER_NAME: ${{ secrets.CONTAINER_NAME }}
   SERVER_HOST: ${{ secrets.SERVER_HOST }} ## public api нашего хоста где будем разворачиваться
   SERVER_USER: ${{ secrets.SERVER_USER }} ## с убунтой например

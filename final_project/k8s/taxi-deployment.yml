@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: taxi
-          image: zhilnikova/mlops-otus-project:21dd32f44d24181ad289541be12a5dc1326a7fc6
+          image: zhilnikova/mlops-otus-project:latest
           ports:
             - containerPort: 8000
