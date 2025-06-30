@@ -1,0 +1,24 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  # namespace: monitoring
+  namespace: default
+  labels:
+    # release: prometheus
+    release: monitoring
+  name: taxi
+spec:
+  endpoints:
+
+  - path: /metrics
+    port: taxi
+    scheme: http
+    interval: 30s
+
+  jobLabel: taxi
+  namespaceSelector:
+    matchNames:
+    - default
+  selector:
+    matchLabels:
+      app: taxi
